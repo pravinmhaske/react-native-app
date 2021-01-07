@@ -1,6 +1,6 @@
-import MyStack from "./stack.navigator";
-import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import MyStack from "./stack.navigator";
 
 function MainStackNavigator() {
   return (

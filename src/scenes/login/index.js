@@ -99,13 +99,11 @@ const LoginScreen = ({navigation}) => {
           {({handleSubmit}) => (
             <>
               <Field
-                style={styles.inputBox}
                 component={CustomInput}
                 name="email"
                 placeholder="email"
               />
               <Field
-                style={styles.inputBox}
                 component={CustomInput}
                 name="password"
                 placeholder="password"
@@ -121,7 +119,7 @@ const LoginScreen = ({navigation}) => {
           )}
         </Formik>
 
-        <Button
+        <Button  style={styles.registerTextStyle}
           title="Don't have an account? Sign Up"
           onPress={goToSignup}
           titleStyle={{
@@ -140,19 +138,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputBox: {
-    width: 300,
-    backgroundColor: '#eeeeee',
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    fontSize: 16,
-    color: '#002f6c',
-    marginVertical: 10,
-  },
   button: {
     width: 300,
     backgroundColor: '#4f83cc',
-    borderRadius: 25,
+    borderRadius: 5,
     marginVertical: 10,
     paddingVertical: 12,
   },

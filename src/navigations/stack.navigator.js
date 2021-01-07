@@ -7,8 +7,15 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        headerStyle: { backgroundColor: "tomato" },
+        headerTitleStyle: { fontWeight: "bold" },
+        headerTintColor: "#f8f8f8",
+      }}
+    >
+      <Stack.Screen name="Login" options={{ title: 'Crypto List' }} component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
