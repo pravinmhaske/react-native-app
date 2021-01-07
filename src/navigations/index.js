@@ -1,16 +1,13 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import MyStack from "./stack.navigator";
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
 
-import AuthNavigator from './auth-navigator';
-import AppNavigator from './app-navigator';
+function MainStackNavigator() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
 
-const RootNavigator = createSwitchNavigator(
-  {
-    Auth: AuthNavigator,
-    App: AppNavigator,
-  },
-  {
-    initialRouteName: 'Auth',
-  },
-);
-
-export default createAppContainer(RootNavigator);
+export default MainStackNavigator;

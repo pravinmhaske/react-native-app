@@ -37,7 +37,7 @@ const LoginScreen = ({navigation}) => {
 })
 
 
-  const goToSignup = () => navigation.navigate('Registration');
+  const goToSignup = () => navigation.navigate('Register');
 
   const handleSubmitPress = () => {
     // setErrortext('');

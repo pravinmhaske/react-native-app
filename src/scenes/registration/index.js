@@ -1,20 +1,3 @@
-// import React from 'react';
-// import {SafeAreaView, Text, TouchableHighlight} from 'react-native';
-
-// const RegistrationScreen = ({navigation}) => (
-//   <SafeAreaView>
-//     <Text>Screen: Registration</Text>
-
-//     <TouchableHighlight onPress={() => navigation.navigate('Home')}>
-//       <Text>Go to home</Text>
-//     </TouchableHighlight>
-//   </SafeAreaView>
-// );
-
-// export default RegistrationScreen;
-
-// -------
-
 import React, {useState, createRef} from 'react';
 import {
   StyleSheet,
@@ -56,7 +39,6 @@ const RegisterScreen = (props) => {
     .required('Full name is required'),
   phoneNumber: yup
     .string()
-    .matches(/(01)(\d){8}\b/, 'Enter a valid phone number')
     .required('Phone number is required'),
   email: yup
     .string()
@@ -65,15 +47,7 @@ const RegisterScreen = (props) => {
   password: yup
     .string()
     .matches(/\w*[a-z]\w*/,  "Password must have a small letter")
-    // .matches(/\w*[A-Z]\w*/,  "Password must have a capital letter")
-    // .matches(/\d/, "Password must have a number")
-    // .matches(/[!@#$%^&*()\-_"=+{}; :,<.>]/, "Password must have a special character")
-    // .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .required('Password is required'),
-  // confirmPassword: yup
-  //   .string()
-  //   .oneOf([yup.ref('password')], 'Passwords do not match')
-  //   .required('Confirm password is required'),
+    .required('Password is required')
 })
 
   const handleSubmit = () => {
