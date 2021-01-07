@@ -143,8 +143,7 @@ const RegisterScreen = (props) => {
     );
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#307ecc'}}>
-      <Text>Sign Up Screen</Text>
+    <View>
       <Loader loading={loading} />
       <ScrollView
         keyboardShouldPersistTaps="handled"
@@ -152,17 +151,7 @@ const RegisterScreen = (props) => {
           justifyContent: 'center',
           alignContent: 'center',
         }}>
-        <View style={{alignItems: 'center'}}>
-          {/* <Image
-            source={require('https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png')}
-            style={{
-              width: '50%',
-              height: 100,
-              resizeMode: 'contain',
-              margin: 30,
-            }}
-          /> */}
-        </View>
+    
         <KeyboardAvoidingView enabled>
           
             <Formik
@@ -175,11 +164,11 @@ const RegisterScreen = (props) => {
 
               validationSchema={signUpValidationSchema}
               onSubmit={(values) => {
-                console.log("value are here "+values);
-                alert('Please fill Name rt');
+              alert(JSON.stringify(values));
+            // handleSubmitPress();
               }}>
               
-              {({handleSubmit, isValid}) => (
+              {({handleSubmit}) => (
                 <>
                
                   <Field
@@ -201,7 +190,7 @@ const RegisterScreen = (props) => {
                 />
                 <Field
                   component={CustomInput}
-                  name="passowrd"
+                  name="password"
                   placeholder="Password"
                   secureTextEntry
                 />
@@ -215,7 +204,7 @@ const RegisterScreen = (props) => {
                 <Button
                   onPress={handleSubmit}
                   title="SIGN UP"
-                  disabled={isValid}
+                  // disabled={isValid}
                 />
                 </>
               )}
