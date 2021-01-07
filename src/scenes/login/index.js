@@ -1,20 +1,23 @@
-import React, {useState, createRef} from 'react';
+import * as yup from 'yup';
+
 import {
-  StyleSheet,
-  TextInput,
-  View,
-  Text,
-  ScrollView,
+  Button,
   Image,
   Keyboard,
-  TouchableOpacity,
   KeyboardAvoidingView,
-  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import {Formik, Field} from 'formik';
-import * as yup from 'yup';
+import {Field, Formik} from 'formik';
+import React, {createRef, useState} from 'react';
+
 import CustomInput from './../../components/atoms/CustomInput';
 import Loader from './../../components/atoms/Loader';
+
 // import AsyncStorage from '@react-native-community/async-storage';
 
 const LoginScreen = ({navigation}) => {
