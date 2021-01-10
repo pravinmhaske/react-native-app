@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
-function MyStack() {
+function AuthStack() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,4 +21,4 @@ function MyStack() {
   );
 }
 
-export default MyStack;
+export default AuthStack;

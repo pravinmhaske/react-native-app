@@ -17,6 +17,7 @@ import React, { createRef, useState } from "react";
 
 import CustomInput from "./../../components/atoms/CustomInput";
 import Loader from "./../../components/atoms/Loader";
+import ScreenContainer from './../wrapper'
 
 // import AsyncStorage from '@react-native-community/async-storage';
 
@@ -42,7 +43,7 @@ const LoginScreen = ({ navigation }) => {
       // .matches(4, "Password must have at least 4 characters "),
   });
 
-  const goToSignup = () => navigation.navigate("Register");
+  const goToSignup = () => navigation.push("Register");
 
   const handleSubmitPress = () => {
     // setErrortext('');
@@ -124,7 +125,8 @@ const query = `
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer style={styles.container}>
+    {/* <View style={styles.container}> */}
       <Loader loading={loading} />
       <KeyboardAvoidingView enabled>
         <Formik
@@ -174,7 +176,8 @@ const query = `
           type="clear"
         />
       </KeyboardAvoidingView>
-    </View>
+    {/* </View> */}
+    </ScreenContainer>
   );
 };
 export default LoginScreen;
