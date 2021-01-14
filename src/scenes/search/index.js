@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Button } from "react-native";
 import ScreenContainer from "./../wrapper";
 
 export const Search = ({ navigation }) => (
@@ -11,7 +11,7 @@ export const Search = ({ navigation }) => (
       onPress={() => {
         navigation.navigate("Home", {
           screen: "Details",
-          params: { name: "React Native School" }
+          params: { name: "React Native School" },
         });
       }}
     />

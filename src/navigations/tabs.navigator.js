@@ -1,11 +1,10 @@
-import LoginScreen from "./../scenes/login";
 import React from "react";
-import RegisterScreen from "./../scenes/registration";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HomeStackScreen, SearchStackScreen } from "./stack.navigator";
 
 const Tabs = createBottomTabNavigator();
 
-function TabsNav() {
+function TabsScreen() {
   return (
     <Tabs.Navigator
       screenOptions={{
@@ -15,10 +14,9 @@ function TabsNav() {
         headerTintColor: "#f8f8f8",
       }}
     >
-      <Tabs.Screen name="Login" options={{ title: 'Crypto List' }} component={LoginScreen} />
-      <Tabs.Screen name="Register" component={RegisterScreen} />
+      <Tabs.Screen name="Home" component={HomeStackScreen} />
+      <Tabs.Screen name="Search" component={SearchStackScreen} />
     </Tabs.Navigator>
   );
 }
-
-export default TabsNav;
+export default TabsScreen;

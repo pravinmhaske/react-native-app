@@ -1,128 +1,9 @@
-
-// import AuthStackNavigator from '_navigations';
-// import React from 'react';
-// const App = () => <AuthStackNavigator />;
-
-// export default App;
-// ------
-
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { AuthContext } from "./contexts/context";
-import {
-  // SignIn,
-  // CreateAccount,
-  // Search,
-  // Home,
-  // Details,
-  // Search2,
-  // Profile,
-  Splash
-} from "./scenes/test";
-import Landing from './scenes/landing'
-import SignIn from './scenes/login'
-import CreateAccount from './scenes/registration'
-
-import Details from './scenes/details'
-import Search from './scenes/search'
-
-import Search2 from './scenes/search2'
-import Home from './scenes/home'
-import Profile from './scenes/profile'
-
-const AuthStack = createStackNavigator();
-const AuthStackScreen = () => (
-  <AuthStack.Navigator>
-   <AuthStack.Screen
-      name="Landing"
-      component={Landing}
-      options={{ title: "Landing" }}
-    />
-    <AuthStack.Screen
-      name="SignIn"
-      component={SignIn}
-      options={{ title: "Sign In" }}
-    />
-    <AuthStack.Screen
-      name="CreateAccount"
-      component={CreateAccount}
-      options={{ title: "Create Account" }}
-    />
-  </AuthStack.Navigator>
-);
-
-const Tabs = createBottomTabNavigator();
-const HomeStack = createStackNavigator();
-const SearchStack = createStackNavigator();
-
-const HomeStackScreen = () => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen name="Home" component={Home} />
-    <HomeStack.Screen
-      name="Details"
-      component={Details}
-      options={({ route }) => ({
-        title: route.params.name
-      })}
-    />
-  </HomeStack.Navigator>
-);
-
-const SearchStackScreen = () => (
-  <SearchStack.Navigator>
-    <SearchStack.Screen name="Search" component={Search} />
-    <SearchStack.Screen name="Search2" component={Search2} />
-  </SearchStack.Navigator>
-);
-
-const ProfileStack = createStackNavigator();
-const ProfileStackScreen = () => (
-  <ProfileStack.Navigator>
-    <ProfileStack.Screen name="Profile" component={Profile} />
-  </ProfileStack.Navigator>
-);
-
-const TabsScreen = () => (
-  <Tabs.Navigator>
-    <Tabs.Screen name="Home" component={HomeStackScreen} />
-    <Tabs.Screen name="Search" component={SearchStackScreen} />
-  </Tabs.Navigator>
-);
-
-const Drawer = createDrawerNavigator();
-const DrawerScreen = () => (
-  <Drawer.Navigator initialRouteName="Profile">
-    <Drawer.Screen name="Home" component={TabsScreen} />
-    <Drawer.Screen name="Profile" component={ProfileStackScreen} />
-  </Drawer.Navigator>
-);
-
-const RootStack = createStackNavigator();
-const RootStackScreen = ({ userToken }) => (
-  <RootStack.Navigator headerMode="none">
-    {userToken ? (
-      <RootStack.Screen
-        name="App"
-        component={DrawerScreen}
-        options={{
-          animationEnabled: false
-        }}
-      />
-    ) : (
-      <RootStack.Screen
-        name="Auth"
-        component={AuthStackScreen}
-        options={{
-          animationEnabled: false
-        }}
-      />
-    )}
-  </RootStack.Navigator>
-);
+import RootStackScreen from "./navigations/stack.navigator";
+import Splash from "./components/atoms/Loader";
 
 export default () => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -141,7 +22,7 @@ export default () => {
       signOut: () => {
         setIsLoading(false);
         setUserToken(null);
-      }
+      },
     };
   }, []);
 
