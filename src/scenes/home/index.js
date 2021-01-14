@@ -1,4 +1,4 @@
-
+import React from "react";
 import {
   Button,
   Image,
@@ -12,9 +12,9 @@ import {
   View,
 } from "react-native";
 
-import ScreenContainer from './../wrapper'
+import ScreenContainer from "./../wrapper";
 
-const Home = ({ navigation }) => (
+export const Home = ({ navigation }) => (
   <ScreenContainer>
     <Text>Master List Screen</Text>
     <Button
@@ -32,5 +32,13 @@ const Home = ({ navigation }) => (
     <Button title="Drawer" onPress={() => navigation.toggleDrawer()} />
   </ScreenContainer>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default Home;

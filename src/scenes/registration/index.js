@@ -16,7 +16,7 @@ import * as yup from 'yup'
 
 import Loader from './../../components/atoms/Loader';
 import CustomInput from './../../components/atoms/CustomInput';
-
+import { AuthContext } from "./../../contexts/context";
 const RegisterScreen = (props) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -49,6 +49,10 @@ const RegisterScreen = (props) => {
     .matches(/\w*[a-z]\w*/,  "Password must have a small letter")
     .required('Password is required')
 })
+const { signUp } = React.useContext(AuthContext);
+const routeToHomePage=()=>{
+signUp();
+}
 
   const handleSubmit = () => {
     setErrortext('');
@@ -164,8 +168,10 @@ const RegisterScreen = (props) => {
 
               validationSchema={signUpValidationSchema}
               onSubmit={(values) => {
-              alert(JSON.stringify(values));
+              // alert(JSON.stringify(values));
             // handleSubmitPress();
+            routeToHomePage();
+
               }}>
               
               {({handleSubmit}) => (

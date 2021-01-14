@@ -14,19 +14,34 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { AuthContext } from "./contexts/context";
 import {
-  SignIn,
-  CreateAccount,
-  Search,
-  Home,
-  Details,
-  Search2,
-  Profile,
+  // SignIn,
+  // CreateAccount,
+  // Search,
+  // Home,
+  // Details,
+  // Search2,
+  // Profile,
   Splash
 } from "./scenes/test";
+import Landing from './scenes/landing'
+import SignIn from './scenes/login'
+import CreateAccount from './scenes/registration'
+
+import Details from './scenes/details'
+import Search from './scenes/search'
+
+import Search2 from './scenes/search2'
+import Home from './scenes/home'
+import Profile from './scenes/profile'
 
 const AuthStack = createStackNavigator();
 const AuthStackScreen = () => (
   <AuthStack.Navigator>
+   <AuthStack.Screen
+      name="Landing"
+      component={Landing}
+      options={{ title: "Landing" }}
+    />
     <AuthStack.Screen
       name="SignIn"
       component={SignIn}

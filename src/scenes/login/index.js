@@ -17,7 +17,8 @@ import React, { createRef, useState } from "react";
 
 import CustomInput from "./../../components/atoms/CustomInput";
 import Loader from "./../../components/atoms/Loader";
-import ScreenContainer from './../wrapper'
+import ScreenContainer from "./../wrapper";
+import { AuthContext } from "./../../contexts/context";
 
 // import AsyncStorage from '@react-native-community/async-storage';
 
@@ -30,112 +31,84 @@ const LoginScreen = ({ navigation }) => {
   const passwordInputRef = createRef();
 
   const validationSchema = yup.object().shape({
-    email: yup
-      .string()
-      // .label("Email")
-      // .email("Enter a valid email")
-      // .required("Please enter a registered email"),
-      ,
-    password: yup
-      .string()
-      // .label("Password")
-      // .required("required")
-      // .matches(4, "Password must have at least 4 characters "),
+    email: yup.string(),
+    // .label("Email")
+    // .email("Enter a valid email")
+    // .required("Please enter a registered email"),
+    password: yup.string(),
+    // .label("Password")
+    // .required("required")
+    // .matches(4, "Password must have at least 4 characters "),
   });
 
-  const goToSignup = () => navigation.push("Register");
-
+  const goToSignup = () => navigation.push("CreateAccount");
+ const { signIn } = React.useContext(AuthContext);
   const handleSubmitPress = () => {
-    // setErrortext('');
+   
+    signIn();
 
-    setLoading(true);
-    let dataToSend = { email: userEmail, password: userPassword };
-    let formBody = [];
-    for (let key in dataToSend) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
+//        const query = `
+//   userMany {
+//     name
+//   }
+// `;
 
-    fetch("http://localhost:3000/api/user/login", {
-      method: "POST",
-      body: formBody,
-      headers: {
-        //Header Defination
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        //Hide Loader
-        setLoading(false);
-        console.log(responseJson);
-        // If server response message same as Data Matched
-        if (responseJson.status === "success") {
-          //   AsyncStorage.setItem('user_id', responseJson.data.email);
-          console.log(responseJson.data.email);
-          navigation.replace("DrawerNavigationRoutes");
-        } else {
-          setErrortext(responseJson.msg);
-          console.log("Please check your email id or password");
-        }
-      })
-      .catch((error) => {
-        //Hide Loader
-        setLoading(false);
-        console.error(error);
-      });
-  };
+    // setLoading(true);
+    // let dataToSend = { email: userEmail, password: userPassword };
+    // let formBody = [];
+    // for (let key in dataToSend) {
+    //   let encodedKey = encodeURIComponent(key);
+    //   let encodedValue = encodeURIComponent(dataToSend[key]);
+    //   formBody.push(encodedKey + "=" + encodedValue);
+    // }
+    // formBody = formBody.join("&");
 
-  const fetchUsers =  () => {
+    // fetch("http://localhost:3000/api/user/login", {
+    //   method: "POST",
+    //   body: formBody,
+    //   headers: {
+    //     //Header Defination
+    //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     //Hide Loader
+    //     setLoading(false);
+    //     console.log(responseJson);
+    //     // If server response message same as Data Matched
+    //     if (responseJson.status === "success") {
+    //       //   AsyncStorage.setItem('user_id', responseJson.data.email);
+    //       console.log(responseJson.data.email);
+    //       navigation.replace("DrawerNavigationRoutes");
+    //     } else {
+    //       setErrortext(responseJson.msg);
+    //       console.log("Please check your email id or password");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     //Hide Loader
+    //     setLoading(false);
+    //     console.error(error);
+    //   });
+  // };
 
-const query = `
-  userMany {
-    name
   }
-`;
-// try {
-   fetch("http://localhost:4000/graphql", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({query}),
-    })
-      .then((response) => { return response.json() } ) 
-     .catch((error) => alert("fetch error:", error))
-     .then((response) => {
-       alert(response)
-     })
-//     // .then((res) => res.json())
-//       .then((res) => alert("res =>",res))
-//       .catch(function(error) {
-// alert('There has been a problem with your fetch operation: ' + error.message);
-//  // ADD THIS THROW error
-//   throw error;
-// });
+ 
 
-    // alert("res r  =>",res);
-  
-// } catch (error) {
-//   alert("error r  =>",error);
-// }
-
-    
-      
-  };
 
   return (
     <ScreenContainer style={styles.container}>
-    {/* <View style={styles.container}> */}
+      {/* <View style={styles.container}> */}
       <Loader loading={loading} />
       <KeyboardAvoidingView enabled>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            alert(JSON.stringify(values));
-            fetchUsers();
-            // handleSubmitPress();
+            // alert(JSON.stringify(values));
+            // fetchUsers();
+            handleSubmitPress();
           }}
         >
           {({ handleSubmit }) => (
@@ -176,7 +149,7 @@ const query = `
           type="clear"
         />
       </KeyboardAvoidingView>
-    {/* </View> */}
+      {/* </View> */}
     </ScreenContainer>
   );
 };
