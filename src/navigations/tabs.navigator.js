@@ -7,12 +7,10 @@ const Tabs = createBottomTabNavigator();
 function TabsScreen() {
   return (
     <Tabs.Navigator
-      screenOptions={{
-        gestureEnabled: true,
-        headerStyle: { backgroundColor: "tomato" },
-        headerTitleStyle: { fontWeight: "bold" },
-        headerTintColor: "#f8f8f8",
-      }}
+     screenOptions={{
+      tabBarColor: "#490222"
+    }}
+      
     >
       <Tabs.Screen name="Home" component={HomeStackScreen} />
       <Tabs.Screen name="Search" component={SearchStackScreen} />

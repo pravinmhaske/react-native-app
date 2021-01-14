@@ -43,7 +43,14 @@ export const ProfileStackScreen = () => (
 
 const AuthStack = createStackNavigator();
 export const AuthStackScreen = () => (
-  <AuthStack.Navigator>
+  <AuthStack.Navigator
+    screenOptions={{
+      gestureEnabled: true,
+      headerStyle: { backgroundColor: "tomato" },
+      headerTitleStyle: { fontWeight: "bold" },
+      headerTintColor: "#f8f8f8",
+    }}
+  >
     <AuthStack.Screen
       name="Landing"
       component={Landing}
@@ -64,15 +71,7 @@ export const AuthStackScreen = () => (
 
 const RootStack = createStackNavigator();
 const RootStackScreen = ({ userToken }) => (
-  <RootStack.Navigator
-    headerMode="none"
-    screenOptions={{
-      gestureEnabled: true,
-      headerStyle: { backgroundColor: "tomato" },
-      headerTitleStyle: { fontWeight: "bold" },
-      headerTintColor: "#f8f8f8",
-    }}
-  >
+  <RootStack.Navigator headerMode="none">
     {userToken ? (
       <RootStack.Screen
         name="App"
